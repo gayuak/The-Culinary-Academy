@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="rodeNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theculinaryacademy.controller.LoginController">
    <children>
       <ImageView fitHeight="900.0" fitWidth="1500.0">
          <image>
@@ -23,26 +23,26 @@
                   <Image url="@../../../../../../../../../Downloads/photography.png" />
                </image>
             </ImageView>
-            <AnchorPane layoutX="80.0" layoutY="281.0" prefHeight="557.0" prefWidth="512.0" style="-fx-background-color: #1E201E; -fx-background-radius: 20;">
+            <AnchorPane layoutX="80.0" layoutY="226.0" prefHeight="612.0" prefWidth="512.0" style="-fx-background-color: #1E201E; -fx-background-radius: 20;">
                <children>
                   <Label layoutX="190.0" layoutY="6.0" prefHeight="82.0" prefWidth="133.0" text="LOGIN" textFill="WHITE" underline="true">
                      <font>
                         <Font name="System Bold" size="36.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="139.0" layoutY="149.0" prefHeight="24.0" prefWidth="339.0" style="-fx-background-color: rgb(128,128,128);" />
-                  <Label layoutX="41.0" layoutY="148.0" text="Name:" textFill="WHITE">
+                  <TextField fx:id="txtId" layoutX="174.0" layoutY="149.0" prefHeight="24.0" prefWidth="304.0" style="-fx-background-color: rgb(128,128,128);" />
+                  <Label layoutX="80.0" layoutY="148.0" text="Id:" textFill="WHITE">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <TextField layoutX="173.0" layoutY="209.0" prefHeight="24.0" prefWidth="304.0" style="-fx-background-color: rgb(128,128,128);" />
+                  <TextField fx:id="txtPassword" layoutX="173.0" layoutY="209.0" prefHeight="24.0" prefWidth="304.0" style="-fx-background-color: rgb(128,128,128);" />
                   <Label layoutX="41.0" layoutY="208.0" text="Password:" textFill="WHITE">
                      <font>
                         <Font size="22.0" />
                      </font>
                   </Label>
-                  <Button layoutX="207.0" layoutY="463.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="98.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Login">
+                  <Button layoutX="207.0" layoutY="463.0" mnemonicParsing="false" onAction="#LoginOnAction" prefHeight="48.0" prefWidth="98.0" style="-fx-background-color: white; -fx-background-radius: 10;" text="Login">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>

@@ -3,9 +3,10 @@ package lk.ijse.theculinaryacademy.bo.custom.impl;
 import lk.ijse.theculinaryacademy.bo.custom.StudentBO;
 import lk.ijse.theculinaryacademy.dao.DAOFactory;
 import lk.ijse.theculinaryacademy.dao.custom.StudentDAO;
-import lk.ijse.theculinaryacademy.dao.custom.UserDAO;
 import lk.ijse.theculinaryacademy.dto.StudentDTO;
+import lk.ijse.theculinaryacademy.dto.UserDTO;
 import lk.ijse.theculinaryacademy.entity.Student;
+import lk.ijse.theculinaryacademy.entity.User;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -25,13 +26,16 @@ public class StudentBOImpl implements StudentBO {
         }
         ArrayList<StudentDTO> studentdtos = new ArrayList<>();
         for (Student student : all) {
-            studentdtos.add(student.toDto());
+            User user = student.getUser();
+            UserDTO userDTO = new UserDTO(user.getUserid(),user.getUsername(),user.getPassword(),user.getJobrole());
+            StudentDTO studentDTO = new StudentDTO(student.getStudentId(),student.getName(),student.getAddress(),student.getContact(),userDTO);
+            studentdtos.add(studentDTO);
         }
         return studentdtos;
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(Long id) {
         try {
             return studentDAO.delete(id);
         } catch (Exception e) {
@@ -42,58 +46,34 @@ public class StudentBOImpl implements StudentBO {
     @Override
     public boolean update(StudentDTO studentDTO) {
         try {
-            return studentDAO.update(studentDTO.toEntity());
+            User user = new User(studentDTO.getUser().getUserid(), studentDTO.getUser().getUsername(), studentDTO.getUser().getPassword(), studentDTO.getUser().getJobrole());
+            Student student = new Student(studentDTO.getStudentId(),studentDTO.getName(),studentDTO.getAddress(),studentDTO.getContact(),user);
+           studentDAO.update(student);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return false;
     }
 
     @Override
     public StudentDTO exist(String id) {
         try {
-            return studentDAO.exist(id).toDto();
+           // return studentDAO.exist(id).toDto();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return null;
     }
-
-    @Override
-    public String curruntid() {
-        try {
-            return studentDAO.curruntid();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
     @Override
     public boolean add(StudentDTO studentDTO) {
         try {
-            return studentDAO.add(studentDTO.toEntity());
+            UserDTO user = studentDTO.getUser();
+            User user1 = new User(user.getUserid(),user.getUsername(),user.getPassword(),user.getJobrole());
+            Student student = new Student (studentDTO.getStudentId(),studentDTO.getName(),studentDTO.getAddress(),studentDTO.getContact(),user1);
+            studentDAO.add(student);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return false;
     }
-
-    @Override
-    public List<StudentDTO> search(String searchText) {
-        List<Student> all;
-        try {
-            all = studentDAO.search(searchText);
-            if (all == null) {
-                return new ArrayList<>();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-        ArrayList<StudentDTO> studentdtos = new ArrayList<>();
-        for (Student student : all) {
-            studentdtos.add(student.toDto());
-        }
-        return studentdtos;
-    }
-
-
 }

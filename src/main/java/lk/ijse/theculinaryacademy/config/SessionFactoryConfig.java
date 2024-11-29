@@ -5,13 +5,13 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import java.io.IOException;
-import java.util.Properties;
+
 
 public class SessionFactoryConfig {
 
     private static SessionFactoryConfig factoryConfiguration;
     private final SessionFactory sessionFactory;
-    private SessionFactoryConfig() throws IOException {
+    private SessionFactoryConfig() {
         sessionFactory = new Configuration().mergeProperties(Utility.getProperties())
                 .addAnnotatedClass(User.class)
                 .addAnnotatedClass(Student.class)

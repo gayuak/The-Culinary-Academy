@@ -7,9 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class StudentTm {
-    private Long id;
-    private String name;
-    private String address;
-    private String contact;
+public class CourseTm {
+
+    private Long cid;
+    private String cname;
+    private String duration;
+    private String price;
 }

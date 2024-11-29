@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class DashboardController {
+public class CoodinatorDashboardController {
 
     public AnchorPane childNode;
     public AnchorPane rodeNode;
@@ -31,30 +31,6 @@ public class DashboardController {
     public void initialize() {
         btnHomeOnAction(new ActionEvent());
     }
-    @FXML
-    void btnAdminOnAction(ActionEvent event) {
-        AnchorPane anchorPane = null;
-        try {
-            anchorPane = FXMLLoader.load(DashboardController.class.getResource("/lk/ijse/theculinaryacademy/view/admin.fxml"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        childNode.getChildren().clear();
-        childNode.getChildren().add(anchorPane);
-    }
-
-    @FXML
-    void btnCourseOnAction(ActionEvent event) {
-        AnchorPane anchorPane = null;
-        try {
-            anchorPane = FXMLLoader.load(DashboardController.class.getResource("/lk/ijse/theculinaryacademy/view/course.fxml"));
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        childNode.getChildren().clear();
-        childNode.getChildren().add(anchorPane);
-    }
-
     @FXML
     void btnHomeOnAction(ActionEvent event) {
         AnchorPane anchorPane = null;

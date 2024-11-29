@@ -12,23 +12,23 @@ public class BOFactory {
     }
 
     public enum BOTypes{
-        SIGNUP,SIGNIN,STUDENT, COURSE, ADMIN, REGISTRATION
+        ADMIN,COURSE,HOME,LOGIN,REGISTRATION,STUDENT
     }
 
     public SuperBO getBO(BOTypes types){
         switch (types){
-            case SIGNUP:
-                return new SignupBOImpl();
-            case SIGNIN:
-                return new SinginBOImpl();
-            case STUDENT:
-                return new StudentBOImpl();
             case ADMIN:
                 return new AdminBOImpl();
             case COURSE:
                 return new CourseBOImpl();
+            case HOME:
+                return new HomeBOImpl();
+            case LOGIN:
+                return new LoginBOImpl();
             case REGISTRATION:
-                return new RegisterBOImpl();
+                return new PlacePaymentBOImpl();
+            case STUDENT:
+                return new StudentBOImpl();
             default:
                 return null;
         }

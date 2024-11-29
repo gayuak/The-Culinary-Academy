@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="rodeNode" prefHeight="900.0" prefWidth="1457.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.theculinaryacademy.controller.CoodinatorDashboardController">
+    <children>
+        <AnchorPane opacity="0.75" prefHeight="900.0" prefWidth="342.0" style="-fx-background-color: #323232;">
+            <children>
+                <Label layoutX="50.0" layoutY="51.0" prefHeight="29.0" prefWidth="208.0" text="Culinary Academy" textFill="WHITE" underline="true">
+                    <font>
+                        <Font size="22.0" />
+                    </font>
+                </Label>
+                <Button layoutX="68.0" layoutY="759.0" mnemonicParsing="false" onAction="#btnLogOutOnAction" style="-fx-background-radius: 20;" text="LOG OUT">
+                    <font>
+                        <Font name="System Bold" size="23.0" />
+                    </font>
+                </Button>
+                <Button fx:id="btnHome" layoutX="110.0" layoutY="158.0" mnemonicParsing="false" onAction="#btnHomeOnAction" text="Home" />
+                <Button fx:id="btnHome11" layoutX="129.0" layoutY="426.0" mnemonicParsing="false" onAction="#btnStudentOnAction" text="Student" />
+                <Button fx:id="btnHome111" layoutX="97.0" layoutY="369.0" mnemonicParsing="false" onAction="#btnPaymentOnAction" text="Place Payment" />
+            </children>
+        </AnchorPane>
+        <AnchorPane fx:id="childNode" layoutX="342.0" prefHeight="900.0" prefWidth="1115.0" style="-fx-background-color: pink;" />
+    </children>
+</AnchorPane>

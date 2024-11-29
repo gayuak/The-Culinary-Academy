@@ -1,4 +1,7 @@
 package lk.ijse.theculinaryacademy.dao.custom;
 
-public interface StudentDAO {
+import lk.ijse.theculinaryacademy.dao.CrudDAO;
+import lk.ijse.theculinaryacademy.entity.Student;
+
+public interface StudentDAO extends CrudDAO<Student> {
 }

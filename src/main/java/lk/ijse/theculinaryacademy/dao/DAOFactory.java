@@ -1,6 +1,7 @@
 package lk.ijse.theculinaryacademy.dao;
 
-import com.example.hibernatelayered.dao.custom.impl.CustomerDAOImpl;
+import lk.ijse.theculinaryacademy.dao.custom.impl.*;
+
 public class DAOFactory {
     private static DAOFactory daoFactory;
 
@@ -12,13 +13,21 @@ public class DAOFactory {
     }
 
     public enum DAOTypes {
-        CUSTOMER,ITEM,ORDER,ORDER_DETAILS,QUERY_DAO
+        STUDENT, COURSE, USER, PAYMENT, STUDENT_COURSE
     }
 
     public SuperDAO getDAO(DAOTypes types){
         switch (types) {
-            case CUSTOMER:
-                return new CustomerDAOImpl();
+            case STUDENT:
+                return new StudentDAOImpl();
+            case COURSE:
+                return new CuorseDAOImpl();
+            case USER:
+                return new UserDAOImpl();
+            case PAYMENT:
+                return new PaymentDAOImpl();
+            case STUDENT_COURSE:
+                return new Student_CourseDAOImpl();
             default:
                 return null;
         }

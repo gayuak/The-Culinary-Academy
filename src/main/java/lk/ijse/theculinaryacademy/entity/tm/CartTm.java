@@ -10,8 +10,6 @@ import lombok.NoArgsConstructor;
 @Data
 
 public class CartTm {
-    private String id;
     private String courseName;
-    private String courseFee;
-    private JFXButton action;
+    private double courseFee;
 }

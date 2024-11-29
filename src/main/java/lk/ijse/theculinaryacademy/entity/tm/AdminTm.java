@@ -1,4 +1,4 @@
-package lk.ijse.theculinaryacademy.entity.entityTm;
+package lk.ijse.theculinaryacademy.entity.tm;
 
 import com.jfoenix.controls.JFXButton;
 import lombok.AllArgsConstructor;
@@ -9,8 +9,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class AdminTm {
-    private String userId;
-    private String userName;
+    private Long userId;
+    private String name;
     private String role;
-    private JFXButton action;
 }

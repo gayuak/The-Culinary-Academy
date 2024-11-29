@@ -3,9 +3,7 @@ package lk.ijse.theculinaryacademy.bo.custom.impl;
 import lk.ijse.theculinaryacademy.bo.custom.AdminBO;
 import lk.ijse.theculinaryacademy.dao.DAOFactory;
 import lk.ijse.theculinaryacademy.dao.custom.UserDAO;
-import lk.ijse.theculinaryacademy.dto.StudentDTO;
 import lk.ijse.theculinaryacademy.dto.UserDTO;
-import lk.ijse.theculinaryacademy.entity.Student;
 import lk.ijse.theculinaryacademy.entity.User;
 
 import java.io.IOException;
@@ -17,30 +15,12 @@ public class AdminBOImpl implements AdminBO {
     @Override
     public boolean add(UserDTO userDTO) {
         try {
-            return userDAO.add(userDTO.toEntity());
+            User user = new User(userDTO.getUserid(),userDTO.getUsername(),userDTO.getPassword(),userDTO.getJobrole());
+            return userDAO.add(user);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
 
-    @Override
-    public List<UserDTO> search(String searchText) {
-        List<User> all;
-        try {
-            all = userDAO.search(searchText);
-            if (all == null) {
-                return new ArrayList<>();
-            }
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new RuntimeException(e);
-        }
-        ArrayList<UserDTO> userDTOS = new ArrayList<>();
-        for (User user : all) {
-            userDTOS.add(user.toDto());
-        }
-        return userDTOS;
     }
 
     @Override
@@ -53,13 +33,14 @@ public class AdminBOImpl implements AdminBO {
         }
         ArrayList<UserDTO> userDTOS = new ArrayList<>();
         for (User user : all) {
-            userDTOS.add(user.toDto());
+          UserDTO userDTO = new UserDTO(user.getUserid(), user.getUsername(), user.getPassword(), user.getJobrole());
+            userDTOS.add(userDTO);
         }
         return userDTOS;
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(Long id) {
         try {
             return userDAO.delete(id);
         } catch (Exception e) {
@@ -70,27 +51,20 @@ public class AdminBOImpl implements AdminBO {
     @Override
     public boolean update(UserDTO userDTO) {
         try {
-            return userDAO.update(userDTO.toEntity());
+          //  return userDAO.update(userDTO.toEntity());
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+        return false;
     }
 
     @Override
     public UserDTO exist(String id) {
         try {
-            return userDAO.exist(id).toDto();
+           // return userDAO.exist(id).toDto();
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    @Override
-    public String curruntid() {
-        try {
-            return userDAO.curruntid();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        return null;
     }
 }
